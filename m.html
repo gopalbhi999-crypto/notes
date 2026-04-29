@@ -1,73 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maths Assignment - Gopal</title>
+    <title>My GitHub Assets Page</title>
     <style>
         body {
-            background-color: #000;
-            color: #fff;
             font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-        h1 {
-            color: #00ff00; /* Neon Green */
-        }
-        .container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 { color: #333; }
+        .image-container {
+            display: flex;
             gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 30px;
         }
-        .notes-photo {
-            width: 100%;
-            max-width: 600px;
+        .image-container img {
+            width: 300px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .pdf-container {
+            width: 90%;
+            max-width: 1000px;
+            height: 800px;
             border: 2px solid #333;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,255,0,0.2);
         }
-        .back-link {
-            display: inline-block;
-            margin-top: 40px;
-            color: #00ff00;
-            text-decoration: none;
-            font-weight: bold;
-            border: 1px solid #00ff00;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: 0.3s;
-        }
-        .back-link:hover {
-            background-color: #00ff00;
-            color: #000;
+        iframe {
+            width: 100%;
+            height: 100%;
         }
     </style>
 </head>
 <body>
 
-    <h1>Maths Assignment</h1>
-    <p>Attached below are the notes photos:</p>
+    <h1>Physics Resources</h1>
 
-    <div class="container">
-        <img src="M.jpeg" alt="Maths Note 1" class="notes-photo">
-        
-        <img src="M2.jpeg" alt="Maths Note 2" class="notes-photo">
-        <img src="B1.jpeg" alt="Maths Note 2" class="notes-photo">
-        <img src="B2.jpeg" alt="Maths Note 2" class="notes-photo">
-        <embed src="CH1 Electric Charges and Fields.pdf" width="800px" height="2100px" />
-            <iframe src="CH1_Electric_Charges_and_Fields.pdf" width="100%" height="600px">
-    <p>Aapka browser PDF support nahi karta. 
-       <a href="CH1_Electric_Charges_and_Fields.pdf">Yaha click karke download karein.</a>
-    </p>
-</iframe>
-
-
+    <div class="image-container">
+        <img src="https://raw.githubusercontent.com/GITHUB_USERNAME/REPO_NAME/main/M2.jpeg" alt="M2 Image">
+        <img src="https://raw.githubusercontent.com/GITHUB_USERNAME/REPO_NAME/main/B1.jpeg" alt="B1 Image">
+        <img src="https://raw.githubusercontent.com/GITHUB_USERNAME/REPO_NAME/main/B2.jpeg" alt="B2 Image">
     </div>
 
-    <br>
-    <a href="y.html" class="back-link">Back to Home</a>
+    <div class="pdf-container">
+        <iframe src="https://raw.githubusercontent.com/GITHUB_USERNAME/REPO_NAME/main/CH1_Electric_Charges_and_Fields.pdf">
+            Your browser does not support PDFs. 
+            <a href="https://raw.githubusercontent.com/GITHUB_USERNAME/REPO_NAME/main/CH1_Electric_Charges_and_Fields.pdf">Download PDF</a>
+        </iframe>
+    </div>
 
 </body>
 </html>
