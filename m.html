@@ -3,57 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My GitHub Assets Page</title>
+    <title>Physics Notes - GitHub</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 20px;
-        }
-        h1 { color: #333; }
-        .image-container {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
-        .image-container img {
-            width: 300px;
-            height: auto;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-        .pdf-container {
-            width: 90%;
-            max-width: 1000px;
-            height: 800px;
-            border: 2px solid #333;
-        }
-        iframe {
-            width: 100%;
-            height: 100%;
-        }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f0f2f5; text-align: center; padding: 20px; }
+        .gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 40px; }
+        .gallery img { width: 300px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); border: 2px solid #fff; }
+        .pdf-section { margin-top: 20px; }
+        .pdf-embed { width: 100%; max-width: 900px; height: 600px; border: none; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        h2 { color: #2c3e50; border-bottom: 2px solid #3498db; display: inline-block; padding-bottom: 5px; }
     </style>
 </head>
 <body>
 
-    <h1>Physics Resources</h1>
-
-    <div class="image-container">
-        <img src="https://raw.githubusercontent.com/GITHUB_USERNAME/REPO_NAME/main/M2.jpeg" alt="M2 Image">
-        <img src="https://raw.githubusercontent.com/GITHUB_USERNAME/REPO_NAME/main/B1.jpeg" alt="B1 Image">
-        <img src="https://raw.githubusercontent.com/GITHUB_USERNAME/REPO_NAME/main/B2.jpeg" alt="B2 Image">
+    <h2>Images Section</h2>
+    <div class="gallery">
+        <img src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/M2.jpeg" alt="M2">
+        <img src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/B1.jpeg" alt="B1">
+        <img src="https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/B2.jpeg" alt="B2">
     </div>
 
-    <div class="pdf-container">
-        <iframe src="https://raw.githubusercontent.com/GITHUB_USERNAME/REPO_NAME/main/CH1_Electric_Charges_and_Fields.pdf">
-            Your browser does not support PDFs. 
-            <a href="https://raw.githubusercontent.com/GITHUB_USERNAME/REPO_NAME/main/CH1_Electric_Charges_and_Fields.pdf">Download PDF</a>
+    <h2>PDF Study Material</h2>
+    <div class="pdf-section">
+        <iframe class="pdf-embed" 
+            src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/YOUR_USER/YOUR_REPO/main/CH1_Electric_Charges_and_Fields.pdf&embedded=true">
         </iframe>
     </div>
 
