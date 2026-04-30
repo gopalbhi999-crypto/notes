@@ -3,65 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maths Assignment - Gopal</title>
+    <title>Maths Gallery - Gopal</title>
     <style>
+        /* Modern Dark Theme */
         body {
-            background-color: #000;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            text-align: center;
+            background-color: #050505; /* Deep Black */
+            color: #ffffff;
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            margin: 0;
             padding: 20px;
-        }
-        h1 {
-            color: #00ff00; /* Neon Green */
-        }
-        .container {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
         }
-        .notes-photo {
+
+        .container {
             width: 100%;
             max-width: 600px;
-            border: 2px solid #333;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,255,0,0.2);
+            text-align: center;
+            padding-top: 40px;
         }
-        .back-link {
+
+        h1 {
+            color: #00ff00; /* Neon Green */
+            font-size: 2.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 0.9rem;
+        }
+
+        /* Image Gallery Layout */
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+        }
+
+        .image-card {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 20px;
+            padding: 15px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .image-card:hover {
+            transform: scale(1.02);
+            border-color: #00ff00;
+        }
+
+        .image-card img {
+            width: 100%;
+            border-radius: 12px;
+            display: block;
+            margin-bottom: 10px;
+            /* Image smooth load effect */
+            background: #1a1a1a; 
+            min-height: 200px; 
+        }
+
+        .img-caption {
+            color: #888;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        /* Back Button - Sleek Design */
+        .back-btn {
+            margin-top: 50px;
+            margin-bottom: 50px;
             display: inline-block;
-            margin-top: 40px;
+            padding: 15px 40px;
             color: #00ff00;
             text-decoration: none;
+            border: 2px solid #00ff00;
+            border-radius: 50px;
             font-weight: bold;
-            border: 1px solid #00ff00;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: 0.3s;
+            transition: all 0.3s ease;
         }
-        .back-link:hover {
-            background-color: #00ff00;
-            color: #000;
+
+        .back-btn:hover {
+            background: rgba(0, 255, 0, 0.1);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            color: #333;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
         }
     </style>
 </head>
 <body>
 
-    <h1>Maths Assignment</h1>
-    <p>Attached below are the notes photos:</p>
-
     <div class="container">
-        <img src="M.jpeg" alt="Maths Note 1" class="notes-photo">
-        
-        <img src="M2.jpeg" alt="Maths Note 2" class="notes-photo">
-        <img src="B1.jpeg" alt="Maths Note 2" class="notes-photo">
-        <img src="B2.jpeg" alt="Maths Note 2" class="notes-photo">
+        <h1>Maths Resources</h1>
+        <p class="subtitle">Visual notes provided by Gopal</p>
 
+        <div class="gallery">
+            <div class="image-card">
+                <img src="M2.jpeg" alt="Maths Image M2">
+                <div class="img-caption">Reference Code: M2</div>
+            </div>
 
+            <div class="image-card">
+                <img src="B1.jpeg" alt="Maths Image B1">
+                <div class="img-caption">Concept Board: B1</div>
+            </div>
+
+            <div class="image-card">
+                <img src="B2.jpeg" alt="Maths Image B2">
+                <div class="img-caption">Formula Sheet: B2</div>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-btn">⬅ BACK TO HOME</a>
+
+        <footer>POWERED BY GOPAL'S IPAD SERVER</footer>
     </div>
-
-    <br>
-    <a href="y.html" class="back-link">Back to Home</a>
 
 </body>
 </html>
