@@ -133,6 +133,28 @@
 
         <footer>Created with ❤️ by Gopal</footer>
     </div>
+    <div id="myModal" style="display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); justify-content: center; align-items: center;">
+    <div style="background: #1e293b; padding: 30px; border-radius: 20px; text-align: center; border: 2px solid #eab308; width: 80%; max-width: 320px; position: relative; color: white;">
+        <span onclick="closeModal()" style="position: absolute; top: 10px; right: 20px; font-size: 30px; cursor: pointer;">&times;</span>
+        <h2 style="color: #eab308; margin: 0 0 10px 0;">Support Me</h2>
+        <p style="font-size: 0.9rem;">Scan to Pay via UPI</p>
+        
+        <img src="A.jpeg" alt="UPI QR" style="width: 100%; border-radius: 10px; margin: 15px 0; border: 4px solid white;">
+        
+        <p style="font-weight: bold; margin-bottom: 20px;">UPI ID: gopal@upi</p>
+        <button onclick="closeModal()" style="background: #eab308; color: black; border: none; padding: 10px 25px; border-radius: 10px; cursor: pointer; font-weight: bold;">Close</button>
+    </div>
+</div>
+
+<script>
+    function openModal() { document.getElementById("myModal").style.display = "flex"; }
+    function closeModal() { document.getElementById("myModal").style.display = "none"; }
+    // Bahar click karne par band ho jaye
+    window.onclick = function(event) {
+        if (event.target == document.getElementById("myModal")) { closeModal(); }
+    }
+</script>
+
 
 </body>
 </html>
