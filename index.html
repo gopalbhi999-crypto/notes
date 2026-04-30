@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gopal's Personal Notes</title>
+    <style>
+        /* Modern Dark Theme */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: #0f172a; /* Deep Dark Blue Background */
+            color: #f1f5f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            background: #1e293b; /* Slightly lighter dark for the card */
+            padding: 40px;
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            text-align: center;
+            border: 1px solid #334155;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .author {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Unique Buttons Styling */
+        .btn {
+            padding: 16px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: white;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Unique Colors */
+        .btn-yt { background: #ef4444; } /* YouTube Red */
+        .btn-physics { background: #0ea5e9; } /* Sky Blue */
+        .btn-chem { background: #f59e0b; } /* Amber Orange */
+        .btn-maths { background: #10b981; } /* Emerald Green */
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            filter: brightness(1.2);
+        }
+
+        .note-text {
+            margin-top: 25px;
+            font-size: 0.85rem;
+            color: #64748b;
+            line-height: 1.5;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.75rem;
+            color: #475569;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>GOPAL SHARMA</h1>
+        <p class="author">Personal Notes & Resources</p>
+
+        <div class="btn-list">
+            <a href="https://youtube.com" class="btn btn-yt" target="_blank">
+                📺 My YouTube Channel
+            </a>
+            
+            <a href="physics.pdf" class="btn btn-physics">
+                ⚛️ Physics Notes
+            </a>
+
+            <a href="chemistry.pdf" class="btn btn-chem">
+                🧪 Chemistry Notes
+            </a>
+
+            <a href="maths.pdf" class="btn btn-maths">
+                📐 Maths Homework & Notes
+            </a>
+        </div>
+
+        <p class="note-text">
+            *After Class 12, content will be provided consistently.
+        </p>
+
+        <footer>Created with ❤️ by Gopal</footer>
+    </div>
+
+</body>
+</html>
+
+
