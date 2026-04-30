@@ -5,59 +5,121 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Personal Space</title>
     <style>
-        /* Background aur Font */
-        body { 
-            background-color: #0f0f0f; 
-            color: #ffffff; 
-            text-align: center; 
+        /* Deep Dark Background */
+        body {
+            background-color: #0a0a0a; /* Very pure black */
+            color: #ffffff;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 50px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
 
-        h1 { color: #00ff00; } /* Hacker Green Color */
-        p { font-size: 1.2em; color: #cccccc; }
+        /* Center Card Design */
+        .container {
+            background-color: #151515; /* Slightly lighter dark for contrast */
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 255, 0, 0.05); /* Very light green glow */
+            border: 1px solid #222;
+            text-align: center;
+            width: 90%;
+            max-width: 450px;
+        }
 
-        /* YouTube Button Style */
+        h1 {
+            color: #00ff00; /* Hacker Green Color */
+            font-size: 2rem;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #cccccc;
+            margin-bottom: 40px;
+        }
+
+        /* Buttons Layout */
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Premium YouTube Button */
         .yt-button {
-            background-color: #ff0000; /* YouTube Red */
+            background: linear-gradient(135deg, #ff0000, #cc0000); /* Red Gradient */
             color: white;
-            padding: 15px 30px;
+            padding: 18px 30px;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 1.1rem;
             font-weight: bold;
-            border-radius: 50px;
-            display: inline-block;
-            margin-top: 30px;
-            transition: 0.3s;
-            box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.4);
+            border-radius: 50px; /* Pill Shape */
+            transition: all 0.3s ease;
+            box-shadow: 0px 8px 20px rgba(255, 0, 0, 0.3);
+            display: block;
         }
 
         .yt-button:hover {
-            background-color: #cc0000;
-            transform: scale(1.1);
-            box-shadow: 0px 0px 25px rgba(255, 0, 0, 0.7);
+            transform: translateY(-4px);
+            box-shadow: 0px 12px 25px rgba(255, 0, 0, 0.6);
+            filter: brightness(1.1);
+        }
+
+        /* Sleek Back Button */
+        .back-button {
+            background: transparent;
+            color: #00ff00; /* Green Text */
+            padding: 16px 30px;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            border: 2px solid #00ff00; /* Green Outline */
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .back-button:hover {
+            background: rgba(0, 255, 0, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0px 5px 15px rgba(0, 255, 0, 0.2);
+        }
+
+        /* Footer Text */
+        .footer {
+            margin-top: 40px;
+            font-size: 0.85em;
+            color: #555;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
-    <h1>Welcome to My iPad Server!    <p>maths ke op notes free .</p>
+    <div class="container">
+        <h1>Welcome to My iPad Server!</h1>
+        <p>Maths ke OP notes free.</p>
 
-    <a href="https://youtube.com/@quick_gyan_0562?si=k58wwWsHk9y4yKeV" target="_blank" class="yt-button">
-        
- Subscribe to My BROTHER Channel
-<a href="m.html" class="yt-button" style="background-color: #4CAF50;">
-    View Maths Notes
-</a>
+        <div class="button-group">
+            <a href="https://youtube.com/@quick_gyan_0562?si=k58wwWsHk9y4yKeV" target="_blank" class="yt-button">
+                ▶️ Subscribe to My BROTHER Channel
+            </a>
 
-   
+            <a href="index.html" class="back-button">
+                ⬅️ Back to Home
+            </a>
+        </div>
 
-    <div style="margin-top: 50px; font-size: 0.8em; color: #555;">
-        Built with Python & HTML 
-        more content provided after 12th
-    
+        <div class="footer">
+            Built with Python & HTML
+        </div>
     </div>
 
 </body>
 </html>
-
