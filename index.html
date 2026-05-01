@@ -97,6 +97,10 @@
     </style>
 </head>
 <body>
+    <audio id="bg-music" loop>
+    <source src="aapki-file-ka-naam.mp3" type="audio/mpeg">
+</audio>
+
 
     <div class="container">
         <h1>GOPAL SHARMA</h1>
@@ -153,6 +157,15 @@
         if (event.target == document.getElementById("myModal")) { closeModal(); }
     }
 </script>
+    <script>
+  window.addEventListener('click', () => {
+    const audio = document.getElementById('bg-music');
+    if (audio.paused) {
+        audio.play();
+    }
+  }, { once: true });
+</script>
+
 
 
 </body>
