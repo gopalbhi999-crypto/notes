@@ -6,8 +6,8 @@
   <title>Class 12 Maths RD Sharma Solutions</title>
   <style>
     :root {
-      --primary-color: #4f46e5;
-      --primary-hover: #4338ca;
+      --primary-color: #6366f1;
+      --primary-hover: #4f46e5;
       --bg-color: #0f172a;
       --card-bg: #1e293b;
       --text-color: #f8fafc;
@@ -20,6 +20,7 @@
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      user-select: none; /* Text selection disable */
     }
 
     body {
@@ -30,7 +31,7 @@
       min-height: 100vh;
     }
 
-    /* Header */
+    /* Header Styling */
     header {
       background-color: var(--card-bg);
       text-align: center;
@@ -50,7 +51,7 @@
       font-size: 0.95rem;
     }
 
-    /* Main Content Layout */
+    /* Main Container */
     .container {
       max-width: 1200px;
       width: 95%;
@@ -61,7 +62,7 @@
       flex: 1;
     }
 
-    /* Buttons Navigation */
+    /* PDF Buttons Area */
     .pdf-selector {
       display: flex;
       justify-content: center;
@@ -92,23 +93,23 @@
     .pdf-btn.active {
       background-color: var(--primary-color);
       border-color: var(--primary-color);
-      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.4);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
     }
 
-    /* Viewer Container */
+    /* PDF Viewer Container */
     .viewer-container {
       background-color: var(--card-bg);
       border-radius: 12px;
       border: 1px solid var(--border-color);
       overflow: hidden;
       box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
-      height: 75vh;
+      height: 78vh;
       display: flex;
       flex-direction: column;
     }
 
     .viewer-header {
-      background-color: rgba(15, 23, 42, 0.6);
+      background-color: rgba(15, 23, 42, 0.8);
       padding: 12px 20px;
       border-bottom: 1px solid var(--border-color);
       display: flex;
@@ -138,23 +139,23 @@
 
     footer p {
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 500;
     }
 
     footer span {
       color: #38bdf8;
-      font-weight: 600;
+      font-weight: 700;
+      text-transform: capitalize;
     }
 
-    /* Mobile Responsive */
     @media (max-width: 768px) {
       .pdf-btn {
         width: 100%;
         justify-content: center;
       }
       .viewer-container {
-        height: 65vh;
+        height: 68vh;
       }
     }
   </style>
@@ -169,13 +170,13 @@
   <div class="container">
     
     <div class="pdf-selector">
-      <button class="pdf-btn active" onclick="loadPDF('Vol1.pdf', 'RD SHARMA VOLUME 1 12th', this)">
+      <button class="pdf-btn active" onclick="loadDrivePDF('15jItcP52Xccz9GlJEDrygGN3__kjwlXC', 'RD SHARMA VOLUME 1 12th', this)">
         📄 RD SHARMA VOLUME 1 12th
       </button>
-      <button class="pdf-btn" onclick="loadPDF('Vol2.pdf', 'RD SHARMA VOLUME 2 12th', this)">
+      <button class="pdf-btn" onclick="loadDrivePDF('1CrUMM6-Zsi2L2_zyi8GTKhCbJoKR9Ap1', 'RD SHARMA VOLUME 2 12th', this)">
         📄 RD SHARMA VOLUME 2 12th
       </button>
-      <button class="pdf-btn" onclick="loadPDF('Mcq.pdf', 'MCQ RD CLASS 12th', this)">
+      <button class="pdf-btn" onclick="loadDrivePDF('1euuetzBuvQ8lPvBJrKMnszTRWGI16qWi', 'MCQ RD CLASS 12th', this)">
         📝 MCQ RD CLASS 12th
       </button>
     </div>
@@ -183,7 +184,7 @@
     <div class="viewer-container">
       <div class="viewer-header">
         <span class="viewer-title" id="current-title">RD SHARMA VOLUME 1 12th</span>
-        <span style="font-size: 0.85rem; color: var(--text-muted);">PDF.js Fast Viewer</span>
+        <span style="font-size: 0.85rem; color: var(--text-muted);">Online Reader Mode</span>
       </div>
       <iframe id="pdf-frame" src=""></iframe>
     </div>
@@ -195,30 +196,31 @@
   </footer>
 
   <script>
-    // PDF Load karne ka Function
-    function loadPDF(filename, title, element) {
-      // Buttons ka Active state change karein
+    // Drive Preview Loader Function
+    function loadDrivePDF(driveId, title, element) {
       const buttons = document.querySelectorAll('.pdf-btn');
       buttons.forEach(btn => btn.classList.remove('active'));
       element.classList.add('active');
 
-      // Title update karein
       document.getElementById('current-title').innerText = title;
-
-      // Full URL calculate karein
-      const pdfUrl = window.location.origin + '/' + filename;
       
-      // Mozilla PDF.js viewer embed (Page-by-page loading ke liye)
-      const viewerUrl = 'https://mozilla.github.io/pdf.js/web/viewer.html?file=' + encodeURIComponent(pdfUrl);
-      
-      // Iframe ka src set karein
-      document.getElementById('pdf-frame').src = viewerUrl;
+      // Google Drive Preview URL
+      const embedUrl = 'https://drive.google.com/file/d/' + driveId + '/preview';
+      document.getElementById('pdf-frame').src = embedUrl;
     }
 
-    // Default: Pehle se Volume 1 load rakhein
+    // Default Load Vol 1
     window.onload = function() {
       const defaultBtn = document.querySelector('.pdf-btn');
-      loadPDF('Vol1.pdf', 'RD SHARMA VOLUME 1 12th', defaultBtn);
+      loadDrivePDF('15jItcP52Xccz9GlJEDrygGN3__kjwlXC', 'RD SHARMA VOLUME 1 12th', defaultBtn);
+    };
+
+    // Right Click aur Shortcut keys block karein security ke liye
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    document.onkeydown = function(e) {
+      if (e.ctrlKey && (e.keyCode === 83 || e.keyCode === 80 || e.keyCode === 85)) {
+        return false;
+      }
     };
   </script>
 
