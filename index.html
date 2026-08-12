@@ -3,145 +3,557 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#0f172a">
+
     <title>Gopal's Personal Site</title>
+
     <style>
-        /* Modern Dark Theme */
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --border: #334155;
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+            --footer: #64748b;
+            --button-border: rgba(255,255,255,0.1);
+        }
+
+        body.light {
+            --bg: #f1f5f9;
+            --card: #ffffff;
+            --border: #dbe3ee;
+            --text: #0f172a;
+            --muted: #64748b;
+            --footer: #94a3b8;
+            --button-border: rgba(15,23,42,0.08);
+        }
+
         body {
             margin: 0;
-            padding: 0;
-            font-family: 'Inter', -apple-system, sans-serif;
-            background-color: #0f172a; 
-            color: #f1f5f9;
+            padding: 20px;
+
+            font-family:
+                'Inter',
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(56,189,248,0.12),
+                    transparent 40%
+                ),
+                var(--bg);
+
+            color: var(--text);
+
             display: flex;
             justify-content: center;
             align-items: center;
+
             min-height: 100vh;
+
+            transition:
+                background 0.4s ease,
+                color 0.4s ease;
         }
+
+
+        /* NIGHT MODE BUTTON */
+
+        .theme-toggle {
+            position: fixed;
+
+            top: 18px;
+            right: 18px;
+
+            width: 48px;
+            height: 48px;
+
+            border: 1px solid var(--border);
+            border-radius: 50%;
+
+            background: var(--card);
+            color: var(--text);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 21px;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 8px 25px rgba(0,0,0,0.18);
+
+            transition:
+                transform 0.3s ease,
+                background 0.3s ease,
+                color 0.3s ease;
+            
+            z-index: 100;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(20deg) scale(1.08);
+        }
+
+        .theme-toggle:active {
+            transform: scale(0.92);
+        }
+
+
+        /* MAIN CARD */
 
         .container {
             width: 90%;
             max-width: 500px;
-            background: #1e293b; 
+
+            background: var(--card);
+
             padding: 40px;
+
             border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+
+            box-shadow:
+                0 20px 50px rgba(0,0,0,0.35);
+
             text-align: center;
-            border: 1px solid #334155;
+
+            border: 1px solid var(--border);
+
+            transition:
+                background 0.4s ease,
+                border 0.4s ease,
+                box-shadow 0.4s ease;
         }
+
+
+        /* TITLE */
 
         h1 {
             font-size: 2.2rem;
+
             margin-bottom: 5px;
-            background: linear-gradient(to right, #38bdf8, #818cf8);
+
+            background:
+                linear-gradient(
+                    to right,
+                    #38bdf8,
+                    #818cf8
+                );
+
             -webkit-background-clip: text;
+            background-clip: text;
+
             -webkit-text-fill-color: transparent;
+
             text-transform: uppercase;
+
             letter-spacing: 2px;
         }
 
+
         .author {
-            color: #94a3b8;
+            color: var(--muted);
+
             font-size: 0.9rem;
+
             margin-bottom: 30px;
+
             text-transform: uppercase;
+
             letter-spacing: 1px;
+
+            transition: color 0.4s ease;
         }
+
+
+        /* BUTTON LIST */
 
         .btn-list {
             display: flex;
+
             flex-direction: column;
+
             gap: 15px;
         }
 
-        /* Buttons Styling */
+
+        /* BUTTON */
+
         .btn {
             padding: 16px;
+
             font-size: 1rem;
+
             font-weight: 600;
+
             text-decoration: none;
+
             color: white;
+
             border-radius: 12px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+            transition:
+                all 0.3s
+                cubic-bezier(0.4, 0, 0.2, 1);
+
             display: flex;
+
             align-items: center;
+
             justify-content: center;
+
             gap: 10px;
-            border: 1px solid rgba(255,255,255,0.1);
+
+            border:
+                1px solid
+                var(--button-border);
         }
 
-        /* Unique Colors */
-        .btn-yt { background: #ef4444; } 
-        .btn-physics { background: #0ea5e9; } 
-        .btn-chem { background: #f59e0b; } 
-        .btn-maths { background: #10b981; }
-        .btn-bio { background: #d946ef; } /* Biology Pink/Magenta */
-        
-        /* New Animated Launcher Button Style */
-        .btn-launcher {
-            background: linear-gradient(135deg, #34c759, #10b981);
-            color: white;
-            margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(52, 199, 89, 0.3);
-        }
 
         .btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            filter: brightness(1.2);
+            transform:
+                translateY(-3px)
+                scale(1.02);
+
+            box-shadow:
+                0 10px 20px rgba(0,0,0,0.3);
+
+            filter: brightness(1.15);
         }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+
+        /* UNIQUE COLORS */
+
+        .btn-yt {
+            background: #ef4444;
+        }
+
+        .btn-physics {
+            background: #0ea5e9;
+        }
+
+        .btn-chem {
+            background: #f59e0b;
+        }
+
+        .btn-maths {
+            background: #10b981;
+        }
+
+        .btn-bio {
+            background: #d946ef;
+        }
+
+
+        /* LAUNCHER */
+
+        .btn-launcher {
+            background:
+                linear-gradient(
+                    135deg,
+                    #34c759,
+                    #10b981
+                );
+
+            color: white;
+
+            margin-top: 10px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(52,199,89,0.3);
+        }
+
+
+        /* NOTE */
 
         .note-text {
             margin-top: 25px;
+
             font-size: 0.85rem;
-            color: #64748b;
+
+            color: var(--muted);
+
             line-height: 1.5;
+
+            transition: color 0.4s ease;
         }
+
+
+        /* FOOTER */
 
         footer {
             margin-top: 30px;
+
             font-size: 0.75rem;
-            color: #475569;
+
+            color: var(--footer);
+
+            transition: color 0.4s ease;
         }
+
+
+        /* MOBILE */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 15px;
+            }
+
+            .container {
+                width: 100%;
+
+                padding:
+                    30px 20px;
+
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .theme-toggle {
+                top: 12px;
+                right: 12px;
+
+                width: 44px;
+                height: 44px;
+            }
+        }
+
+
+        /* PAGE ANIMATION */
+
+        .container {
+            animation:
+                fadeUp 0.7s ease;
+        }
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+                transform:
+                    translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    translateY(0);
+            }
+        }
+
+
+        /* LIGHT MODE EXTRA */
+
+        body.light {
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(56,189,248,0.15),
+                    transparent 40%
+                ),
+                #f1f5f9;
+        }
+
+        body.light .container {
+            box-shadow:
+                0 20px 50px
+                rgba(15,23,42,0.12);
+        }
+
     </style>
 </head>
+
+
 <body>
 
+    <!-- NIGHT MODE BUTTON -->
+
+    <button
+        class="theme-toggle"
+        id="themeToggle"
+        aria-label="Toggle night mode"
+        title="Toggle Night Mode"
+    >
+        🌙
+    </button>
+
+
     <div class="container">
-        <h1>GOPAL SHARMA</h1>
-        <p class="author">Personal Notes & Resources</p>
+
+        <h1>
+            GOPAL SHARMA
+        </h1>
+
+        <p class="author">
+            Personal Notes & Resources
+        </p>
+
 
         <div class="btn-list">
-            <a href="y.html" class="btn btn-yt">
+
+            <a
+                href="y.html"
+                class="btn btn-yt"
+            >
                 📺 YouTube
             </a>
-            
-            <a href="CH1%20Electric%20Charges%20and%20Fields.pdf" class="btn btn-physics" target="_blank">
+
+
+            <a
+                href="CH1%20Electric%20Charges%20and%20Fields.pdf"
+                class="btn btn-physics"
+                target="_blank"
+            >
                 ⚛️ Physics Notes
             </a>
 
-            <a href="che.pdf" class="btn btn-chem" target="_blank">
+
+            <a
+                href="che.pdf"
+                class="btn btn-chem"
+                target="_blank"
+            >
                 🧪 Chemistry Notes
             </a>
 
-            <a href="m.html" class="btn btn-maths">
+
+            <a
+                href="m.html"
+                class="btn btn-maths"
+            >
                 📐 RD SHARMA
             </a>
 
-            <a href="bio.pdf" class="btn btn-bio" target="_blank">
+
+            <a
+                href="bio.pdf"
+                class="btn btn-bio"
+                target="_blank"
+            >
                 🧬 Biology PYQ
             </a>
 
-            <a href="u.html" class="btn btn-launcher">
-                📥 GLAUNCHER APK 
+
+            <a
+                href="u.html"
+                class="btn btn-launcher"
+            >
+                📥 GLAUNCHER APK
             </a>
+
         </div>
+
 
         <p class="note-text">
             *After Class 12, content will be provided consistently.
         </p>
 
-        <footer>Created with ❤️ by Gopal</footer>
+
+        <footer>
+            Created with ❤️ by Gopal
+        </footer>
+
     </div>
+
+
+    <script>
+
+        const themeToggle =
+            document.getElementById(
+                "themeToggle"
+            );
+
+        const body =
+            document.body;
+
+
+        /*
+         * Load saved theme
+         */
+
+        const savedTheme =
+            localStorage.getItem(
+                "gopal-theme"
+            );
+
+
+        if (savedTheme === "light") {
+
+            body.classList.add("light");
+
+            themeToggle.textContent = "☀️";
+
+        } else {
+
+            themeToggle.textContent = "🌙";
+
+        }
+
+
+        /*
+         * Toggle theme
+         */
+
+        themeToggle.addEventListener(
+            "click",
+            function () {
+
+                body.classList.toggle(
+                    "light"
+                );
+
+
+                const isLight =
+                    body.classList.contains(
+                        "light"
+                    );
+
+
+                if (isLight) {
+
+                    themeToggle.textContent =
+                        "☀️";
+
+                    localStorage.setItem(
+                        "gopal-theme",
+                        "light"
+                    );
+
+                } else {
+
+                    themeToggle.textContent =
+                        "🌙";
+
+                    localStorage.setItem(
+                        "gopal-theme",
+                        "dark"
+                    );
+                }
+
+            }
+        );
+
+    </script>
 
 </body>
 </html>
