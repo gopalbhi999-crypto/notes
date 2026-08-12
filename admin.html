@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Gopal Admin</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            padding: 20px;
+
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #0f172a,
+                    #111827
+                );
+
+            color: #f8fafc;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 520px;
+        }
+
+        .card {
+            background: #1e293b;
+
+            border: 1px solid #334155;
+
+            border-radius: 22px;
+
+            padding: 25px;
+
+            box-shadow:
+                0 20px 60px
+                rgba(0,0,0,.35);
+        }
+
+        .logo {
+            width: 58px;
+            height: 58px;
+
+            margin: 0 auto 15px;
+
+            border-radius: 18px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 28px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #38bdf8,
+                    #6366f1
+                );
+        }
+
+        h1 {
+            text-align: center;
+            margin: 0;
+            font-size: 25px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #94a3b8;
+            margin: 8px 0 25px;
+        }
+
+        label {
+            display: block;
+
+            margin-top: 15px;
+            margin-bottom: 7px;
+
+            color: #cbd5e1;
+
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        input,
+        select {
+            width: 100%;
+
+            padding: 14px;
+
+            border-radius: 12px;
+
+            border: 1px solid #475569;
+
+            background: #0f172a;
+
+            color: white;
+
+            outline: none;
+
+            font-size: 15px;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #38bdf8;
+        }
+
+        button {
+            width: 100%;
+
+            border: 0;
+
+            border-radius: 12px;
+
+            padding: 14px;
+
+            margin-top: 18px;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #38bdf8,
+                    #6366f1
+                );
+
+            transition: .2s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: scale(.98);
+        }
+
+        .danger {
+            background:
+                linear-gradient(
+                    135deg,
+                    #ef4444,
+                    #dc2626
+                );
+        }
+
+        .secondary {
+            background: #334155;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        .message {
+            padding: 12px;
+
+            margin-top: 15px;
+
+            border-radius: 10px;
+
+            text-align: center;
+
+            font-size: 14px;
+
+            display: none;
+        }
+
+        .success {
+            display: block;
+            background: #064e3b;
+            color: #a7f3d0;
+        }
+
+        .error {
+            display: block;
+            background: #7f1d1d;
+            color: #fecaca;
+        }
+
+        .resource {
+            background: #0f172a;
+
+            border: 1px solid #334155;
+
+            border-radius: 15px;
+
+            padding: 15px;
+
+            margin-top: 12px;
+        }
+
+        .resource-name {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .resource-subject {
+            color: #94a3b8;
+            font-size: 13px;
+            margin-top: 4px;
+        }
+
+        .resource-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .resource-actions button {
+            margin-top: 12px;
+            padding: 10px;
+            font-size: 13px;
+        }
+
+        .logout {
+            margin-top: 25px;
+        }
+
+        .small {
+            text-align: center;
+            color: #64748b;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- LOGIN -->
+
+    <div
+        class="card"
+        id="loginCard"
+    >
+
+        <div class="logo">
+            🔐
+        </div>
+
+        <h1>
+            Gopal Admin
+        </h1>
+
+        <p class="subtitle">
+            Resource Management
+        </p>
+
+        <label>
+            Username
+        </label>
+
+        <input
+            id="username"
+            type="text"
+            placeholder="Enter username"
+            autocomplete="username"
+        >
+
+        <label>
+            Password
+        </label>
+
+        <input
+            id="password"
+            type="password"
+            placeholder="Enter password"
+            autocomplete="current-password"
+        >
+
+        <button
+            onclick="login()"
+        >
+            LOGIN
+        </button>
+
+        <div
+            id="loginMessage"
+            class="message"
+        ></div>
+
+        <p class="small">
+            Admin access only
+        </p>
+
+    </div>
+
+
+    <!-- ADMIN PANEL -->
+
+    <div
+        class="card hidden"
+        id="adminCard"
+    >
+
+        <div class="logo">
+            📚
+        </div>
+
+        <h1>
+            Admin Panel
+        </h1>
+
+        <p class="subtitle">
+            Add and manage resources
+        </p>
+
+
+        <!-- UPLOAD -->
+
+        <label>
+            Resource Name
+        </label>
+
+        <input
+            id="resourceName"
+            type="text"
+            placeholder="Example: Electric Charges Notes"
+        >
+
+
+        <label>
+            Subject
+        </label>
+
+        <select id="subject">
+
+            <option>
+                Physics
+            </option>
+
+            <option>
+                Chemistry
+            </option>
+
+            <option>
+                Maths
+            </option>
+
+            <option>
+                Biology
+            </option>
+
+            <option>
+                Other
+            </option>
+
+        </select>
+
+
+        <label>
+            PDF File
+        </label>
+
+        <input
+            id="pdf"
+            type="file"
+            accept="application/pdf,.pdf"
+        >
+
+
+        <button
+            onclick="uploadPDF()"
+            id="uploadButton"
+        >
+            📤 UPLOAD RESOURCE
+        </button>
+
+
+        <div
+            id="uploadMessage"
+            class="message"
+        ></div>
+
+
+        <!-- RESOURCE LIST -->
+
+        <h2
+            style="
+                margin-top:30px;
+                font-size:19px;
+            "
+        >
+            Existing Resources
+        </h2>
+
+        <div id="resources">
+            Loading...
+        </div>
+
+
+        <button
+            class="secondary logout"
+            onclick="logout()"
+        >
+            LOGOUT
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    /*
+     * IMPORTANT:
+     *
+     * Replace this with your deployed
+     * backend URL.
+     *
+     * Example:
+     *
+     * https://gopal-api.onrender.com
+     *
+     */
+
+    const API =
+        "YOUR_BACKEND_URL";
+
+
+    let token =
+        localStorage.getItem(
+            "gopal_admin_token"
+        );
+
+
+    /* -------------------------
+       MESSAGE
+    ------------------------- */
+
+    function showMessage(
+        element,
+        text,
+        type
+    ) {
+
+        element.textContent =
+            text;
+
+        element.className =
+            "message " + type;
+
+    }
+
+
+    /* -------------------------
+       LOGIN
+    ------------------------- */
+
+    async function login() {
+
+        const username =
+            document.getElementById(
+                "username"
+            ).value.trim();
+
+        const password =
+            document.getElementById(
+                "password"
+            ).value;
+
+        const message =
+            document.getElementById(
+                "loginMessage"
+            );
+
+
+        if (!username || !password) {
+
+            showMessage(
+                message,
+                "Username and password required.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        try {
+
+            const response =
+                await fetch(
+                    API +
+                    "/api/admin/login",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify({
+                                username,
+                                password
+                            })
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    data.error ||
+                    "Login failed."
+                );
+
+            }
+
+
+            token =
+                data.token;
+
+
+            localStorage.setItem(
+                "gopal_admin_token",
+                token
+            );
+
+
+            openAdmin();
+
+        } catch (error) {
+
+            showMessage(
+                message,
+                error.message,
+                "error"
+            );
+
+        }
+
+    }
+
+
+    /* -------------------------
+       OPEN ADMIN
+    ------------------------- */
+
+    function openAdmin() {
+
+        document
+            .getElementById(
+                "loginCard"
+            )
+            .classList
+            .add("hidden");
+
+
+        document
+            .getElementById(
+                "adminCard"
+            )
+            .classList
+            .remove("hidden");
+
+
+        loadResources();
+
+    }
+
+
+    /* -------------------------
+       CHECK LOGIN
+    ------------------------- */
+
+    async function checkLogin() {
+
+        if (!token) {
+            return;
+        }
+
+
+        try {
+
+            const response =
+                await fetch(
+                    API +
+                    "/api/admin/check",
+                    {
+                        headers: {
+                            Authorization:
+                                "Bearer " +
+                                token
+                        }
+                    }
+                );
+
+
+            if (response.ok) {
+
+                openAdmin();
+
+            } else {
+
+                logout();
+
+            }
+
+        } catch {
+
+            logout();
+
+        }
+
+    }
+
+
+    /* -------------------------
+       UPLOAD
+    ------------------------- */
+
+    async function uploadPDF() {
+
+        const name =
+            document
+                .getElementById(
+                    "resourceName"
+                )
+                .value
+                .trim();
+
+
+        const subject =
+            document
+                .getElementById(
+                    "subject"
+                )
+                .value;
+
+
+        const file =
+            document
+                .getElementById(
+                    "pdf"
+                )
+                .files[0];
+
+
+        const message =
+            document.getElementById(
+                "uploadMessage"
+            );
+
+
+        if (!name) {
+
+            showMessage(
+                message,
+                "Enter a resource name.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        if (!file) {
+
+            showMessage(
+                message,
+                "Select a PDF file.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        if (
+            file.type !==
+            "application/pdf"
+        ) {
+
+            showMessage(
+                message,
+                "Only PDF files are allowed.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        const formData =
+            new FormData();
+
+
+        formData.append(
+            "name",
+            name
+        );
+
+
+        formData.append(
+            "subject",
+            subject
+        );
+
+
+        formData.append(
+            "pdf",
+            file
+        );
+
+
+        const button =
+            document.getElementById(
+                "uploadButton"
+            );
+
+
+        button.disabled = true;
+
+        button.textContent =
+            "Uploading...";
+
+
+        try {
+
+            const response =
+                await fetch(
+                    API +
+                    "/api/admin/upload",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            Authorization:
+                                "Bearer " +
+                                token
+                        },
+
+                        body: formData
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    data.error ||
+                    "Upload failed."
+                );
+
+            }
+
+
+            showMessage(
+                message,
+                "PDF uploaded successfully!",
+                "success"
+            );
+
+
+            document
+                .getElementById(
+                    "resourceName"
+                )
+                .value = "";
+
+
+            document
+                .getElementById(
+                    "pdf"
+                )
+                .value = "";
+
+
+            loadResources();
+
+        } catch (error) {
+
+            showMessage(
+                message,
+                error.message,
+                "error"
+            );
+
+        } finally {
+
+            button.disabled = false;
+
+            button.textContent =
+                "📤 UPLOAD RESOURCE";
+
+        }
+
+    }
+
+
+    /* -------------------------
+       LOAD RESOURCES
+    ------------------------- */
+
+    async function loadResources() {
+
+        const container =
+            document.getElementById(
+                "resources"
+            );
+
+
+        try {
+
+            const response =
+                await fetch(
+                    API +
+                    "/api/admin/resources",
+                    {
+                        headers: {
+                            Authorization:
+                                "Bearer " +
+                                token
+                        }
+                    }
+                );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Could not load resources."
+                );
+
+            }
+
+
+            const resources =
+                await response.json();
+
+
+            if (!resources.length) {
+
+                container.innerHTML =
+                    `
+                    <p
+                        style="
+                        color:#94a3b8;
+                        text-align:center;
+                        "
+                    >
+                        No resources yet.
+                    </p>
+                    `;
+
+                return;
+            }
+
+
+            container.innerHTML =
+                "";
+
+
+            resources
+                .reverse()
+                .forEach(resource => {
+
+                    const div =
+                        document.createElement(
+                            "div"
+                        );
+
+                    div.className =
+                        "resource";
+
+
+                    div.innerHTML =
+                        `
+                        <div
+                            class="resource-name"
+                        >
+                            ${escapeHTML(
+                                resource.name
+                            )}
+                        </div>
+
+                        <div
+                            class="resource-subject"
+                        >
+                            ${escapeHTML(
+                                resource.subject
+                            )}
+                        </div>
+
+                        <div
+                            class="resource-actions"
+                        >
+
+                            <button
+                                class="secondary"
+                                onclick="
+                                window.open(
+                                API +
+                                '${resource.file}',
+                                '_blank'
+                                )
+                                "
+                            >
+                                👁️ VIEW
+                            </button>
+
+                            <button
+                                class="danger"
+                                onclick="
+                                deleteResource(
+                                '${resource.id}'
+                                )
+                                "
+                            >
+                                🗑️ DELETE
+                            </button>
+
+                        </div>
+                        `;
+
+
+                    container.appendChild(
+                        div
+                    );
+
+                });
+
+        } catch (error) {
+
+            container.innerHTML =
+                `
+                <p
+                    style="
+                    color:#fca5a5;
+                    text-align:center;
+                    "
+                >
+                    ${escapeHTML(
+                        error.message
+                    )}
+                </p>
+                `;
+
+        }
+
+    }
+
+
+    /* -------------------------
+       DELETE
+    ------------------------- */
+
+    async function deleteResource(id) {
+
+        const confirmed =
+            confirm(
+                "Delete this resource?"
+            );
+
+
+        if (!confirmed) {
+            return;
+        }
+
+
+        try {
+
+            const response =
+                await fetch(
+                    API +
+                    "/api/admin/resources/" +
+                    id,
+                    {
+                        method: "DELETE",
+
+                        headers: {
+                            Authorization:
+                                "Bearer " +
+                                token
+                        }
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    data.error ||
+                    "Delete failed."
+                );
+
+            }
+
+
+            loadResources();
+
+        } catch (error) {
+
+            alert(
+                error.message
+            );
+
+        }
+
+    }
+
+
+    /* -------------------------
+       LOGOUT
+    ------------------------- */
+
+    function logout() {
+
+        localStorage.removeItem(
+            "gopal_admin_token"
+        );
+
+        token = null;
+
+        document
+            .getElementById(
+                "adminCard"
+            )
+            .classList
+            .add("hidden");
+
+
+        document
+            .getElementById(
+                "loginCard"
+            )
+            .classList
+            .remove("hidden");
+
+    }
+
+
+    /* -------------------------
+       HTML ESCAPE
+    ------------------------- */
+
+    function escapeHTML(value) {
+
+        return String(value)
+            .replace(
+                /&/g,
+                "&amp;"
+            )
+            .replace(
+                /</g,
+                "&lt;"
+            )
+            .replace(
+                />/g,
+                "&gt;"
+            )
+            .replace(
+                /"/g,
+                "&quot;"
+            )
+            .replace(
+                /'/g,
+                "&#039;"
+            );
+
+    }
+
+
+    /* -------------------------
+       START
+    ------------------------- */
+
+    checkLogin();
+
+</script>
+
+</body>
+</html>
